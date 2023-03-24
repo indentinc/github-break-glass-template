@@ -3,10 +3,27 @@ on:
     types: [opened, closed]
 
 jobs:
-  apply-label:
+  grant:
+    if: ${{ github.event.issues.opened }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v6
         with:
           script: |
-            console.log(context)
+            github.rest.teams.addOrUpdateMembershipForUserInOrg({
+              org: context.organization.login,
+              team_slug: "example-break-glass-CODEOWNERS",
+              username: context.actor,
+            })
+  revoke:
+    if: ${{ github.event.issues.closed }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.teams.removeMembershipForUserInOrg({
+              org: context.organization.login,
+              team_slug: "example-break-glass-CODEOWNERS",
+              username: context.actor,
+            })
