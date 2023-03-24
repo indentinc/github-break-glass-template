@@ -11,7 +11,7 @@ jobs:
         with:
           script: |
             github.rest.teams.addOrUpdateMembershipForUserInOrg({
-              org: context.organization.login,
+              org: context.repo.owner,
               team_slug: "example-break-glass-CODEOWNERS",
               username: context.actor,
             })
@@ -23,7 +23,7 @@ jobs:
         with:
           script: |
             github.rest.teams.removeMembershipForUserInOrg({
-              org: context.organization.login,
+              org: context.repo.owner,
               team_slug: "example-break-glass-CODEOWNERS",
               username: context.actor,
             })
