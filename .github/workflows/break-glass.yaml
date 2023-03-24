@@ -9,4 +9,4 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            consle.log(context.issue)
+            console.log(context.issue)
