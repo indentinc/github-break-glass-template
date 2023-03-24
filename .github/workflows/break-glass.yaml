@@ -4,7 +4,7 @@ on:
 
 jobs:
   grant:
-    if: ${{ github.event.issues.opened == true }}
+    if: ${{ github.event.issue.opened }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v6
@@ -16,7 +16,7 @@ jobs:
               username: context.actor,
             })
   revoke:
-    if: ${{ github.event.issues.closed == true }}
+    if: ${{ github.event.issue.closed }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v6
