@@ -6,6 +6,8 @@ jobs:
   grant:
     if: ${{ github.event.action == 'opened' }}
     runs-on: ubuntu-latest
+    permissions:
+      teams: write
     steps:
       - uses: actions/github-script@v6
         with:
@@ -18,6 +20,8 @@ jobs:
   revoke:
     if: ${{ github.event.action == 'closed' }}
     runs-on: ubuntu-latest
+    permissions:
+      teams: write
     steps:
       - uses: actions/github-script@v6
         with:
