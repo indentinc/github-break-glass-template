@@ -6,11 +6,10 @@ jobs:
   grant:
     if: ${{ github.event.action == 'opened' }}
     runs-on: ubuntu-latest
-    permissions:
-      teams: write
     steps:
       - uses: actions/github-script@v6
         with:
+          github-token: ${{ SECRETS.BREAK_GLASS_TOKEN }}
           script: |
             github.rest.teams.addOrUpdateMembershipForUserInOrg({
               org: context.repo.owner,
@@ -20,11 +19,10 @@ jobs:
   revoke:
     if: ${{ github.event.action == 'closed' }}
     runs-on: ubuntu-latest
-    permissions:
-      teams: write
     steps:
       - uses: actions/github-script@v6
         with:
+          github-token: ${{ SECRETS.BREAK_GLASS_TOKEN }}
           script: |
             github.rest.teams.removeMembershipForUserInOrg({
               org: context.repo.owner,
