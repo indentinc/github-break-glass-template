@@ -11,10 +11,17 @@ jobs:
         with:
           github-token: ${{ SECRETS.BREAK_GLASS_TOKEN }}
           script: |
+            const team = 'example-break-glass-CODEOWNERS'
             github.rest.teams.addOrUpdateMembershipForUserInOrg({
               org: context.repo.owner,
-              team_slug: "example-break-glass-CODEOWNERS",
+              team_slug: team,
               username: context.actor,
+            })
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `Granted access: ${context.repo.owner}/${team}`
             })
   revoke:
     if: ${{ github.event.action == 'closed' }}
@@ -24,8 +31,15 @@ jobs:
         with:
           github-token: ${{ SECRETS.BREAK_GLASS_TOKEN }}
           script: |
+            const team = 'example-break-glass-CODEOWNERS'
             github.rest.teams.removeMembershipForUserInOrg({
               org: context.repo.owner,
-              team_slug: "example-break-glass-CODEOWNERS",
+              team_slug: team,
               username: context.actor,
+            })
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `Granted access: ${context.repo.owner}/${team}`
             })
