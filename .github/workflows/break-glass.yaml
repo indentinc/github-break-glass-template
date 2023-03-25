@@ -21,7 +21,7 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `Granted access: ${context.repo.owner}/${team}`
+              body: `Granted access: @${context.repo.owner}/${team}`
             })
   revoke:
     if: ${{ github.event.action == 'closed' }}
@@ -41,5 +41,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `Granted access: ${context.repo.owner}/${team}`
+              body: `Revoked access: @${context.repo.owner}/${team}`
             })
