@@ -12,12 +12,12 @@ jobs:
           github-token: ${{ SECRETS.BREAK_GLASS_TOKEN }}
           script: |
             const team = 'example-break-glass-CODEOWNERS'
-            github.rest.teams.addOrUpdateMembershipForUserInOrg({
+            github.teams.addOrUpdateMembershipForUserInOrg({
               org: context.repo.owner,
               team_slug: team,
               username: context.actor,
             })
-            github.rest.issues.createComment({
+            github.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -32,12 +32,12 @@ jobs:
           github-token: ${{ SECRETS.BREAK_GLASS_TOKEN }}
           script: |
             const team = 'example-break-glass-CODEOWNERS'
-            github.rest.teams.removeMembershipForUserInOrg({
+            github.teams.removeMembershipForUserInOrg({
               org: context.repo.owner,
               team_slug: team,
               username: context.actor,
             })
-            github.rest.issues.createComment({
+            github.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
