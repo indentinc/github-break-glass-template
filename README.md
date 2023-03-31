@@ -15,4 +15,4 @@
 
 ## What does it look like?
 
-<img width="938" alt="Screenshot of a GitHub Issue containing an access request" src="https://user-images.githubusercontent.com/1026125/229153384-a9afebfe-6ae0-4c3d-aae8-0c2de4e1c323.png">
+<a href="https://indent.com/blog/github-break-glass"><img width="938" alt="Screenshot of a GitHub Issue containing an access request" src="https://user-images.githubusercontent.com/1026125/229153384-a9afebfe-6ae0-4c3d-aae8-0c2de4e1c323.png"></a>
